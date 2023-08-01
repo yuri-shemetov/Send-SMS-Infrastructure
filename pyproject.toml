@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "send-sms-infrastructure"
+version = "0.1.0"
+description = "For Alfa-Bank"
+authors = ["Yuri <yuri-sh@tut.by>"]
+readme = "README.md"
+packages = [{include = "send_sms_infrastructure"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2.4"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
