@@ -10,6 +10,9 @@ packages = [{include = "send_sms_infrastructure"}]
 python = "^3.10"
 django = "^4.2.4"
 python-dotenv = "^1.0.0"
+djangorestframework = "^3.14.0"
+viberbot = "^1.0.12"
+black = "^23.7.0"
 
 
 [build-system]
