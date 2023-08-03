@@ -4,10 +4,10 @@ from rest_framework.response import Response
 
 from mailings.services import sending_router
 from mailings.serializers import MailingSerializer
-from mailings.models import Mailing, MailingText
+from mailings.models import Mailing
 
 
-class CreateMailingViewSet(viewsets.ModelViewSet):
+class MailingViewSet(viewsets.ModelViewSet):
     serializer_class = MailingSerializer
     # permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Mailing.objects.all()
@@ -16,9 +16,9 @@ class CreateMailingViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             sending_router(
-                mailing_text=serializer.get("mailing_text"),
-                clients=serializer.get("clients"),
-                send_date=serializer.get("send_date"),
+                mailing_text=serializer.validated_data.get("mailing_text"),
+                clients=serializer.validated_data.get("clients"),
+                send_date=serializer.validated_data.get("send_date"),
             )
             serializer.save()
             self.perform_create(serializer)
@@ -27,5 +27,4 @@ class CreateMailingViewSet(viewsets.ModelViewSet):
             return Response(
                 serializer.data, status=status.HTTP_201_CREATED, headers=headers
             )
-        else:
-            return Response({"saved": False}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"saved": False}, status=status.HTTP_400_BAD_REQUEST)

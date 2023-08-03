@@ -3,14 +3,10 @@ from mailings import models
 
 
 class MailingSerializer(serializers.ModelSerializer):
+    # mailing_text = serializers.SlugRelatedField(slug_field="title", read_only=False)
     class Meta:
         model = models.Mailing
         fields = [
-            "first_name",
-            "last_name",
-            "patronymic",
-            "phone",
-            "email",
-            "created_at",
-            "updated_at",
+            "clients",
+            "mailing_text",
         ]

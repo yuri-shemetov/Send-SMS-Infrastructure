@@ -1,7 +1,5 @@
 from django.db import models
 
-import uuid
-
 from clients.models import Client
 from letters.models import Letter
 
@@ -13,7 +11,6 @@ class Mailing(models.Model):
         ("RECEIVED", "Получено"),
     ]
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     clients = models.ManyToManyField(Client, verbose_name="Список клиентов")
     mailing_text = models.ForeignKey(
         Letter,
@@ -28,7 +25,6 @@ class Mailing(models.Model):
         choices=MAILING_STATUSES,
         verbose_name="Статус",
     )
-    active = models.Manager()
 
     class Meta:
         verbose_name = "Рассылка"
