@@ -16,3 +16,24 @@ pip install --user poetry
 poetry install
 poetry --version
 ```
+- Запустить Reddis из docker-compose:
+```bash
+sudo docker compose -f docker-compose.yml up --build
+```
+
+- Переходим в папку SRC: `cd src`. Вам необходимо будет настроить вашу копию .env для работы с приложением. Хорошим стартом будет копирование файла .`env.dist в .env.`
+
+- Запускаем миграции
+```bash
+poetry run manage.py makemigrate
+```
+- При необходимости создаем суперюзера для админки
+```bash
+poetry run  manage.py createsuperuser
+```
+- Запускаем локальный сервер, а также Celery (worker - тот, кто выполняет задачу; beat - тот, кто следит за графиком)
+```bash
+poetry run ./manage.py runserver
+poetry run celery -A project_settings worker -l INFO
+poetry run celery -A project_settings beat -l INFO
+```

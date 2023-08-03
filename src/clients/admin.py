@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from clients.models import Client
+
+
+@admin.register(Client)
+class MailingModelAdmin(admin.ModelAdmin):
+    list_display = ("last_name", "first_name", "patronymic", "phone")

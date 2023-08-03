@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from letters.models import Letter
+
+
+@admin.register(Letter)
+class MailingModelAdmin(admin.ModelAdmin):
+    list_display = ("title", "text")
