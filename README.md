@@ -37,3 +37,25 @@ poetry run ./manage.py runserver
 poetry run celery -A project_settings worker -l INFO
 poetry run celery -A project_settings beat -l INFO
 ```
+
+## Общая информация по работе с API
+
+Для работы с сервисом рекомендуется использовать Postman. Для начала Вам необходимо зарегистрироваться. Пример:
+```bash
+POST: api/users/registration/
+{
+    "username": "dummy",
+    "email": "dummy@email.com",
+    "password": "password"
+}
+```
+
+В результате чего, Вы должны получить ответ. Пример:
+```bash
+{
+    "username": "dummy",
+    "email": "dummy@email.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNjkzNzM2OTAyfQ.2xQxMzwgPO3pDp53dLp2T3IKUfyteScQT7FlvRvUvFk"
+}
+```
+Вы получаете токен доступа, который нужно предоставить всякий раз, когда необходимо создать базу клиентов, сообщения и рассылки.

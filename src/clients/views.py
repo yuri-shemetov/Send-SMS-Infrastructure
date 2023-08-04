@@ -6,5 +6,5 @@ from clients.models import Client
 
 class PageModelViewSet(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Client.objects.all()

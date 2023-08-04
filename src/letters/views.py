@@ -7,5 +7,5 @@ from letters.models import Letter
 
 class LetterModelViewSet(viewsets.ModelViewSet):
     serializer_class = LetterSerializer
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Letter.objects.all()

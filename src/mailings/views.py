@@ -7,5 +7,5 @@ from mailings.models import Mailing
 
 class MailingViewSet(viewsets.ModelViewSet):
     serializer_class = MailingSerializer
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Mailing.objects.all()

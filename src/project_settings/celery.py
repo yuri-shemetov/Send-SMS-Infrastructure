@@ -13,7 +13,7 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     "send-mailings-every-1-hour": {
         "task": "mailings.tasks.send_message",
-        # "schedule": crontab(minute=0, hour='*/1,9-22'),
-        "schedule": crontab(minute="*/1"),
+        "schedule": crontab(minute=0, hour="*/1,9-22"),
+        # "schedule": crontab(minute="*/1"),
     },
 }
